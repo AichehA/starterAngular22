@@ -40,29 +40,34 @@ config:
 ---
 treeView-beta
   starterAngular22/
+    .vscode ## configuration partager pour l'ide
     public/
       favicon.ico
     src/
       app/
         app.config.ts ## configuration des providers Angular
-        app.routes.ts ## table des routes, actuellement vide
-        app.ts ## composant racine
-        app.html ## template du composant racine
         app.css ## styles du composant racine
+        app.html ## template du composant racine
+        app.routes.ts ## table des routes, actuellement vide
         app.spec.ts ## tests du composant racine
+        app.ts ## composant racine
       index.html
       main.ts ## point d'entree et bootstrap de l'application
       styles.css ## styles globaux
+    .editorconfig ## 
+    .gitignore ## 
+    .postcssrc.json ## 
+    .prettierrc ## 
+    AGENTS.md ## décrit comment fonctionne le projet pour l'IA
     angular.json ## configuration Angular CLI
+    package-lock.json ## dependances vérrouiller à un instant T
     package.json ## dependances et scripts npm
-    tsconfig.json
     tsconfig.app.json
+    tsconfig.json
     tsconfig.spec.json
-    README.md
 ```
 
 ## Configuration des plugins dans Vscode
 ## Installation et configuration de eslint / prettier
 ## Choix et installation une librairie de composant UI
 ## Conclusion
-
