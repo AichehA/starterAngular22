@@ -40,31 +40,35 @@ config:
 ---
 treeView-beta
   starterAngular22/
-    .vscode ## configuration partager pour l'ide
+    .vscode/ ## configuration partagée de VS Code
+      extensions.json ## extensions recommandées pour le projet
+      launch.json ## configurations de lancement et de débogage Chrome
+      mcp.json ## configuration du serveur MCP Angular CLI
+      tasks.json ## tâches VS Code pour démarrer et tester l'application
     public/
-      favicon.ico
+      favicon.ico ## icone affichee dans l'onglet du navigateur
     src/
       app/
-        app.config.ts ## configuration des providers Angular
-        app.css ## styles du composant racine
-        app.html ## template du composant racine
-        app.routes.ts ## table des routes, actuellement vide
-        app.spec.ts ## tests du composant racine
+        app.config.ts ## fournisseurs globaux, gestion des erreurs et routeur Angular
+        app.css ## styles du composant racine, fichier actuellement vide
+        app.html ## template HTML du composant racine
+        app.routes.ts ## définition des routes, actuellement vide
+        app.spec.ts ## tests unitaires de création du composant et du titre affiché
         app.ts ## composant racine
-      index.html
-      main.ts ## point d'entree et bootstrap de l'application
-      styles.css ## styles globaux
-    .editorconfig ## 
-    .gitignore ## 
-    .postcssrc.json ## 
-    .prettierrc ## 
-    AGENTS.md ## décrit comment fonctionne le projet pour l'IA
-    angular.json ## configuration Angular CLI
-    package-lock.json ## dependances vérrouiller à un instant T
-    package.json ## dependances et scripts npm
-    tsconfig.app.json
-    tsconfig.json
-    tsconfig.spec.json
+      index.html ## document HTML hôte qui contient app-root
+      main.ts ## point d'entrée qui initialise et démarre le composant racine `app.ts`
+      styles.css ## styles globaux et import de Tailwind CSS
+    .editorconfig ## règles partagées de formatage des fichiers
+    .gitignore ## fichiers et dossiers exclus du suivi Git
+    .postcssrc.json ## configuration PostCSS avec le plugin Tailwind CSS
+    .prettierrc ## règles de formatage Prettier
+    AGENTS.md ## consignes de développement pour l'assistant de code
+    angular.json ## configuration Angular CLI des compilations, tests et ressources
+    package-lock.json ## versions exactes et arbre résolu des dépendances npm
+    package.json ## dépendances du projet et commandes npm
+    tsconfig.app.json ## configuration TypeScript de l'application, hors tests
+    tsconfig.json ## options TypeScript partagées et références aux configurations
+    tsconfig.spec.json ## configuration TypeScript des fichiers de test
 ```
 
 ## Configuration des plugins dans Vscode
