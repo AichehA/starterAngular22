@@ -9,6 +9,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
   - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
   - [Installation et configuration de Eslint / Prettier](#installation-et-configuration-de-eslint--prettier)
   - [Choix et installation une librairie de composant UI](#choix-et-installation-une-librairie-de-composant-ui)
+  - [i18n](#i18n)
   - [Conclusion](#conclusion)
 
 ## Prérequis
@@ -20,9 +21,11 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
 
 Utilisation de la commande :
 
-```cmd
-npx -p @angular/cli ng new starterAngular22
+```bash
+npx -p @angular/cli@22 ng new starterAngular22
 ```
+
+Cette commande permet la création d'un projet Angular en version 22. On utilise le mode `npx` qui permet d'exécuté une commande a distance sans avoir besoin d'installer `ng` sur notre poste.
 
 ## Explication de la structure de l'application
 
@@ -98,6 +101,21 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
 
 ## Installation et configuration de Eslint / Prettier
 
+```bash
+npm run ng add @angular-eslint/schematics@22
+```
+
+> [!TIP]
+> On utilise la commande `npm run ng` pour utiliser le binaire du projet dans le dossier `node_modules` sans avoir besoin d'installer globalement la version Angular 22 sur notre machine.
+
+Cette commande va ajouter et installer des nouveaux fichiers et dépendances pour la configuration de eslint.
+
+Toute la configuration est dans le fichier `eslint.config.ts`.
+
+Il est possible de retrouver la liste de la configuration en lien avec angular sur leur [github du plugin angular-eslint](https://github.com/angular-eslint/angular-eslint/tree/v22.5.0/packages/eslint-plugin/docs/rules). Il indique comment utiliser les différents règles de code avec les cas passants et d'erreur. 
+
 ## Choix et installation une librairie de composant UI
+
+## i18n
 
 ## Conclusion
