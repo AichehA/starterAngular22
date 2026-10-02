@@ -7,7 +7,12 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
   - [Création du projet](#création-du-projet)
   - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
   - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
-  - [Installation et configuration de Eslint / Prettier](#installation-et-configuration-de-eslint--prettier)
+  - [Installation et configuration de ESLint / Prettier](#installation-et-configuration-de-eslint--prettier)
+    - [Installation de ESlint](#installation-de-eslint)
+    - [À quoi sert la configuration ?](#à-quoi-sert-la-configuration-)
+    - [Règles importantes dans le projet](#règles-importantes-dans-le-projet)
+    - [Installation de Prettier](#installation-de-prettier)
+    - [Pourquoi utiliser Prettier ?](#pourquoi-utiliser-prettier-)
   - [Choix et installation une librairie de composant UI](#choix-et-installation-une-librairie-de-composant-ui)
   - [i18n](#i18n)
   - [Conclusion](#conclusion)
@@ -99,20 +104,85 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
 }
 ```
 
-## Installation et configuration de Eslint / Prettier
+## Installation et configuration de ESLint / Prettier
+
+### Installation de ESlint
+
+Pour installer et préparer la validation du code Angular, on utilise la commande suivante :
 
 ```bash
 npm run ng add @angular-eslint/schematics@22
 ```
 
 > [!TIP]
-> On utilise la commande `npm run ng` pour utiliser le binaire du projet dans le dossier `node_modules` sans avoir besoin d'installer globalement la version Angular 22 sur notre machine.
+> On utilise `npm run ng` pour appeler le binaire Angular du projet depuis `node_modules`, sans devoir installer Angular CLI globalement sur la machine.
 
-Cette commande va ajouter et installer des nouveaux fichiers et dépendances pour la configuration de eslint.
+Cette commande ajoute les dépendances et génère la configuration ESLint du projet. Dans cette version d'Angular, le fichier généré est `eslint.config.js`.
 
-Toute la configuration est dans le fichier `eslint.config.ts`.
+### À quoi sert la configuration ?
 
-Il est possible de retrouver la liste de la configuration en lien avec angular sur leur [github du plugin angular-eslint](https://github.com/angular-eslint/angular-eslint/tree/v22.5.0/packages/eslint-plugin/docs/rules). Il indique comment utiliser les différents règles de code avec les cas passants et d'erreur. 
+Le fichier `eslint.config.js` regroupe plusieurs ensembles de règles :
+
+- `eslint.configs.recommended` : règles de base recommandées par ESLint.
+- `tseslint.configs.recommended` : bonnes pratiques pour TypeScript.
+- `tseslint.configs.stylistic` : règles de style et de lisibilité.
+- `angular.configs.tsRecommended` : recommandations Angular pour les fichiers TypeScript.
+- `angular.configs.templateRecommended` : règles pour les templates Angular.
+- `angular.configs.templateAccessibility` : vérification de l'accessibilité HTML et Angular.
+
+### Règles importantes dans le projet
+
+Le fichier contient aussi des règles personnalisées sur les sélecteurs Angular :
+
+Ces règles imposent que :
+
+- les attributs Angular utilisent le préfixe `app` en camelCase, par exemple `appUserCard` ;
+- les composants HTML utilisent le préfixe `app` en kebab-case, par exemple `app-user-card`.
+
+Cela permet de garder une convention de nommage cohérente et évite les collisions avec les balises HTML standards.
+
+Il est possible de retrouver la liste complète des règles Angular ESLint sur leur [GitHub du plugin angular-eslint](https://github.com/angular-eslint/angular-eslint/tree/v22.5.0/packages/eslint-plugin/docs/rules).
+
+### Installation de Prettier
+
+```bash
+npm i prettier -D
+```
+
+> [!NOTE]
+> Dans cette commande on utilise le paramètre `i` qui est un alias de `install` puis on indique le paramètre `-D` pour ajouter la dépendance dans la partie `devDependencies`
+> du fichier `package.json`.
+
+### Pourquoi utiliser Prettier ?
+
+Prettier sert à uniformiser le format du code (indentation, guillemets, virgules, sauts de ligne, etc.). Il est complémentaire à ESLint :
+
+- ESLint valide la qualité et la cohérence du code
+- Prettier s'occupe du rendu visuel et du formatage.
+
+Le projet contient déjà un fichier `.prettierrc` mais il faut lui ajouter des nouvelles règles.
+
+```jsonc
+{
+  "printWidth": 120, // Permet de définir la longueur de ligne à partir de laquelle Prettier tentera de renvoyer le code à la ligne pour en préserver la lisibilité.
+  "tabWidth": 2, // Nombre d'espaces par niveau d'indentation
+  "useTabs": false, // Pour ne pas indenter les lignes avec des tabulations, mais avec des espaces
+  "singleQuote": true, // Pour formater le code avec des guillemets simples au lieu de guillemets doubles
+  "semi": true, // Pour afficher des points-virgules à la fin des instructions
+  "bracketSpacing": true, // Pour formater le code avec des espaces autour des accolades dans les objets ou les tableaux
+  "arrowParens": "avoid", // Pour éviter les parenthèses autour d’un paramètre unique de fonction fléchée.
+  "trailingComma": "es5", // Utilise des virgules de fin dans les paramètres de type en TypeScript et Flow lorsqu’elles sont valides en ES5 (objets, tableaux, etc.).
+  "bracketSameLine": true, // Place le « > » d’un élément HTML multiligne (HTML, JSX, Vue, Angular) à la fin de la dernière ligne au lieu de le placer seul sur la ligne suivante (ne s’applique pas aux éléments auto-fermants).
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular" // Pour avoir le formatage Anguler sur les contrôl flow (@if, @for, ...)
+      }
+    }
+  ]
+}
+```
 
 ## Choix et installation une librairie de composant UI
 
