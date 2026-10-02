@@ -6,7 +6,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
   - [Prérequis](#prérequis)
   - [Création du projet](#création-du-projet)
   - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
-  - [Configuration des plugins dans Vscode](#configuration-des-plugins-dans-vscode)
+  - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
   - [Installation et configuration de Eslint / Prettier](#installation-et-configuration-de-eslint--prettier)
   - [Choix et installation une librairie de composant UI](#choix-et-installation-une-librairie-de-composant-ui)
   - [Conclusion](#conclusion)
@@ -71,27 +71,27 @@ treeView-beta
     tsconfig.spec.json ## configuration TypeScript des fichiers de test
 ```
 
-## Configuration des plugins dans Vscode
+## Configuration des extensions dans VS Code
 
-Le fichier extensions.json permet de contenir toutes la liste des extensions partager avec son équipe qui sont recommander à installer.
+Le fichier `.vscode/extensions.json` partage avec l'équipe une liste d'extensions recommandées pour ce projet. Ces recommandations ne sont pas obligatoires : VS Code propose de les installer lorsqu'on ouvre le projet.
 
-Pour les retrouver facilement, il faut aller dans l'onglet extension et tape `@recommended`
+Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
 
-```json
+```jsonc
 {
   "recommendations": [
     // Obligatoire pour Angular
-    "angular.ng-template", // Permet d'aider l'IDE a comprendre la langue Angular
-    "esbenp.prettier-vscode", // Plugin pour le formattage du code
-    "dbaeumer.vscode-eslint", // Plugin pour définir des règles de codage
-    "ms-vscode.vscode-typescript-next", // Plugin pour le langage TS et JS
-    "formulahendry.auto-close-tag", // Permet la création de la balise fermante
-    // Confort de vie
-    "PKief.material-icon-theme", // Avoir des belles icons pour se retrouver facilement
-    "usernamehw.errorlens", // Permet d'afficher les erreurs directement dans le code sans passer la souris dessus.    
-    "christian-kohler.path-intellisense", // Permet d'avoir des recommandations de fichier
-    "steoates.autoimport" // Aide à l'import de fichier
+    "angular.ng-template", // Angular Language Service : complétion et diagnostics dans les templates Angular
+    "esbenp.prettier-vscode", // Formatage du code avec Prettier
+    "dbaeumer.vscode-eslint", // Diagnostics ESLint, une fois ESLint configuré dans le projet
     // TODO le schématique
+
+    // Extensions de confort de vie
+    "PKief.material-icon-theme", // Icônes de fichiers et de dossiers
+    "usernamehw.errorlens", // Affiche les diagnostics près du code concerné
+    "formulahendry.auto-close-tag", // Ferme automatiquement les balises HTML
+    "christian-kohler.path-intellisense", // Complète les chemins de fichiers
+    "steoates.autoimport" // Facilite l'ajout d'imports
   ]
 }
 ```
