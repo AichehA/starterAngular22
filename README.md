@@ -13,6 +13,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
     - [Règles importantes dans le projet](#règles-importantes-dans-le-projet)
     - [Installation de Prettier](#installation-de-prettier)
     - [Pourquoi utiliser Prettier ?](#pourquoi-utiliser-prettier-)
+    - [Mise à jour de la config vscode partager](#mise-à-jour-de-la-config-vscode-partager)
   - [Choix et installation une librairie de composant UI](#choix-et-installation-une-librairie-de-composant-ui)
   - [i18n](#i18n)
   - [Conclusion](#conclusion)
@@ -99,8 +100,8 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
     "usernamehw.errorlens", // Affiche les diagnostics près du code concerné
     "formulahendry.auto-close-tag", // Ferme automatiquement les balises HTML
     "christian-kohler.path-intellisense", // Complète les chemins de fichiers
-    "steoates.autoimport" // Facilite l'ajout d'imports
-  ]
+    "steoates.autoimport", // Facilite l'ajout d'imports
+  ],
 }
 ```
 
@@ -177,10 +178,43 @@ Le projet contient déjà un fichier `.prettierrc` mais il faut lui ajouter des 
     {
       "files": "*.html",
       "options": {
-        "parser": "angular" // Pour avoir le formatage Anguler sur les contrôl flow (@if, @for, ...)
-      }
-    }
-  ]
+        "parser": "angular", // Pour avoir le formatage Anguler sur les contrôl flow (@if, @for, ...)
+      },
+    },
+  ],
+}
+```
+
+### Mise à jour de la config vscode partager
+
+Maintenant que la config est mise en place. Il est possible dans vscode d'ajouter un fichier nommé `settings.json`.
+
+Ce fichier va contenu toutes la configuration que l'on veut partager. Dans notre cas, on va ajouter la configuration pour lancer le formatage prettier au moment de la sauvegarde du fichier.
+
+Voici la configuration :
+
+```jsonc
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
 }
 ```
 
