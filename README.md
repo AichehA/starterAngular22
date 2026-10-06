@@ -15,8 +15,10 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
     - [Pourquoi utiliser Prettier ?](#pourquoi-utiliser-prettier-)
     - [Mise à jour de la config vscode partager](#mise-à-jour-de-la-config-vscode-partager)
   - [Choix et installation une librairie de composant UI](#choix-et-installation-une-librairie-de-composant-ui)
+    - [Point important](#point-important)
   - [i18n](#i18n)
-  - [Conclusion](#conclusion)
+    - [À quoi sert l’i18n ?](#à-quoi-sert-li18n-)
+  - [Conclusion TODO](#conclusion-todo)
 
 ## Prérequis
 
@@ -220,6 +222,44 @@ Voici la configuration :
 
 ## Choix et installation une librairie de composant UI
 
+Pour accélérer le développement d’une interface moderne et cohérente, il est souvent utile d’ajouter une librairie de composants. Pour un projet Angular, l’option la plus naturelle reste Angular Material, car elle est officiellement maintenue par Google et est pensée pour fonctionner nativement avec le framework.
+
+Voici une liste des librairie populaire :
+
+- Angular Material
+- PrimeNg
+- NG Bootstrap
+- Taiga UI
+- Zard/ui (qui correspond à un Shadcn/ui de react)
+
+### Point important
+
+Ses librairies apportent des composants prêts à l’emploi, mais il ne remplace pas le bon usage de l’architecture et du design system. Le plus important reste de choisir une librairie adaptée au besoin du projet, puis de garder une cohérence visuelle dans l’application.
+
 ## i18n
 
-## Conclusion
+L’internationalisation est une fonctionnalité native d’Angular qu'il faut activé avec l'installation du package `ng add @angular/localize`. Elle permet de préparer une application pour plusieurs langues sans dupliquer toute la logique de l’interface.
+
+Il est aussi possible d'utilise d'autre librairie comme `transloco de jsverse`.
+
+J'ai surtout utiliser la librairie transloco car elle permet une utilisation assez simple.
+
+### À quoi sert l’i18n ?
+
+L’i18n permet de :
+
+- Traduire les libellés affichés à l’utilisateur dans d'autre langue comme `fr`, `en`, `es`
+- Centraliser les libelles dans des fichiers pour une meilleur maintenance dans le temps.
+
+## Conclusion TODO
+
+Ce starter Angular 22 permet de poser les bases d’un projet moderne et bien structuré :
+
+- création de projet Angular 22 avec le bon outil CLI
+- organisation claire du code et des ressources
+- configuration de VS Code pour gagner en productivité
+- installation d’ESLint et Prettier pour la qualité et le formatage
+- préparation du projet avec des composants UI
+- support de i18n pour des applications multilangues
+
+En somme, ce starter sert de fondation solide pour démarrer un projet Angular avec des conventions lisibles, des outils pertinents et une structure facilement extensible.
