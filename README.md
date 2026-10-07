@@ -14,6 +14,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
     - [Installation de Prettier](#installation-de-prettier)
     - [Pourquoi utiliser Prettier ?](#pourquoi-utiliser-prettier-)
     - [Mise à jour de la config vscode partager](#mise-à-jour-de-la-config-vscode-partager)
+    - [Mise à jour de la config de "package.json"](#mise-à-jour-de-la-config-de-packagejson)
   - [Choix et installation une librairie de composant UI](#choix-et-installation-une-librairie-de-composant-ui)
     - [Point important](#point-important)
   - [i18n](#i18n)
@@ -218,6 +219,19 @@ Voici la configuration :
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 }
+```
+
+### Mise à jour de la config de "package.json"
+
+Il faut ajouté quelques commandes dans notre config.
+
+```jsonc
+  "scripts": {
+    ...
+    "lint": "ng lint", // Permet de lister les erreurs d'écriture
+    "lint:fix": "ng lint --fix", // Permet de fix automatique si possible le code sinon il faut le faire manuellement
+    "prettier": "prettier --write ." // Permet de formater tous les fichiers du projet
+  },
 ```
 
 ## Choix et installation une librairie de composant UI
