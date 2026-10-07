@@ -15,6 +15,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
     - [Pourquoi utiliser Prettier ?](#pourquoi-utiliser-prettier-)
     - [Mise à jour de la configuration VS Code partagée](#mise-à-jour-de-la-configuration-vs-code-partagée)
     - [Mise à jour de la config de "package.json"](#mise-à-jour-de-la-config-de-packagejson)
+    - [Lancement des commandes](#lancement-des-commandes)
   - [Choix et installation d'une librairie de composants UI](#choix-et-installation-dune-librairie-de-composants-ui)
     - [Point important](#point-important)
   - [i18n](#i18n)
@@ -232,6 +233,26 @@ Il faut ajouter quelques commandes dans notre configuration.
     "prettier": "prettier --write ." // Permet de formater tous les fichiers du projet
   },
 ```
+
+### Lancement des commandes
+
+Pour commencer lancer le formatage du code avec la commande prettier.
+
+```bash
+npm run prettier
+```
+
+Suite à cela, il faudra commit les changements.
+
+Ensuite il faudra lancer la commande pour fix les erreurs de code.
+
+```bash
+npm run lint:fix
+```
+
+Ensuite il faudra aussi commit les modifications.
+
+A partir de ce moment la, l'environnement prettier et eslint sont configurer. A chaque modification de fichier, il sera lancer et tout le monde aura le même configuration sur son poste de travail.
 
 ## Choix et installation d'une librairie de composants UI
 
