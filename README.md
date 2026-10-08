@@ -4,6 +4,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
 
 - [Starter Angular 22 avec VS Code](#starter-angular-22-avec-vs-code)
   - [Prérequis](#prérequis)
+    - [Gestion des versions de node](#gestion-des-versions-de-node)
   - [Création du projet](#création-du-projet)
   - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
   - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
@@ -27,6 +28,24 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
 
 - Node 22 avec NVM
 - VS Code
+
+### Gestion des versions de node
+
+Avant de faire la création du projet, il faut avoir NODE sur son poste. Pour cela, le plus facile est d'installer l'outil "NVM" qui permet la gestion de plusieurs version de node sur son poste.
+
+L'utilisation de NVM (Node Version Manager) offre plusieurs avantages :
+
+- **Isolation par projet** : Vous pouvez facilement basculer d'une version de Node.js à une autre selon les exigences spécifiques de chaque projet.
+- **Absence de conflits** : Vous évitez les problèmes de dépendances liés à une installation globale unique (ainsi que les problèmes de permissions liés aux paquets globaux).
+- **Simplicité d'utilisation** : NVM permet d'installer et de changer de version de Node en quelques commandes simples.
+
+Pour installer, il faut aller sur [le github nvm](https://github.com/nvm-sh/nvm#install--update-script) pour lancer la commande curl.
+
+**Commandes de base :**
+
+- `nvm install 22` : installe la version 22 de Node.js.
+- `nvm use 22` : active la version 22 pour le poste.
+- `nvm alias default 22` : définit la version 22 comme version par défaut pour le poste.
 
 ## Création du projet
 
