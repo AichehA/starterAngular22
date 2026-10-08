@@ -7,7 +7,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
   - [Création du projet](#création-du-projet)
   - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
   - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
-    - [Le système de schématique dans Angular](#le-système-de-schématique-dans-angular)
+    - [Le système de schematics dans Angular](#le-système-de-schematics-dans-angular)
   - [Installation et configuration de ESLint / Prettier](#installation-et-configuration-de-eslint--prettier)
     - [Installation de ESLint](#installation-de-eslint)
     - [À quoi sert la configuration ?](#à-quoi-sert-la-configuration-)
@@ -98,7 +98,7 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
     "angular.ng-template", // Angular Language Service : complétion et diagnostics dans les templates Angular
     "esbenp.prettier-vscode", // Formatage du code avec Prettier
     "dbaeumer.vscode-eslint", // Diagnostics ESLint, une fois ESLint configuré dans le projet
-    "imgildev.vscode-angular-generator", // Schématique de génération de code pour Angular
+    "imgildev.vscode-angular-generator", // Schematics de génération de code pour Angular
 
     // Extensions de confort de vie
     "PKief.material-icon-theme", // Icônes de fichiers et de dossiers
@@ -110,9 +110,9 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
 }
 ```
 
-### Le système de schématique dans Angular
+### Le système de schematics dans Angular
 
-Angular met à disposition un système de schémas ("schematics") qui permet de générer automatiquement des fichiers et de la structure de code selon des modèles prédéfinis. Cela permet de créer rapidement des composants, des services, des directives, des routes et d'autres éléments du projet sans avoir à tout écrire à la main.
+Angular met à disposition un système de schémas ("schematics") qui permet de générer automatiquement des fichiers et une structure de code selon des modèles prédéfinis. Cela permet de créer rapidement des composants, des services, des directives, des routes et d'autres éléments du projet sans avoir à tout écrire à la main.
 
 Par exemple, la commande suivante :
 
@@ -125,11 +125,11 @@ crée automatiquement le composant, son template, son style et ses tests associ�
 Ce mécanisme est très utile pour standardiser le code et gagner du temps lors du développement. Il repose sur des schémas officiels fournis par Angular, mais il est aussi possible d'ajouter des schémas personnalisés.
 
 > [!WARNING]
-> Je ne recommande pas l'extension `cyrilletuzi.angular-schematics`, car elle est payante et il n'est pas possible de la personnalisée facilement.
+> Je ne recommande pas l'extension `cyrilletuzi.angular-schematics`, car elle est payante et il n'est pas possible de la personnaliser facilement.
 
-Je recommande l'extension `imgildev.vscode-angular-generator` car elle permet de faire des commandes personnalisée.
+Je recommande l'extension `imgildev.vscode-angular-generator` car elle permet de créer des commandes personnalisées.
 
-Dans le fichier `.vscode/settings.json`, il est possible d'ajouter des commandes personnalisée pour faire la génération de composants, services ou autre via le plugin.
+Dans le fichier `.vscode/settings.json`, il est possible d'ajouter des commandes personnalisées pour générer des composants, des services ou autres via le plugin.
 
 Exemple de configuration :
 
@@ -154,10 +154,10 @@ Exemple de configuration :
 > [!TIP]
 > On utilise `npm run ng` pour appeler le binaire Angular du projet depuis `node_modules`, sans devoir installer Angular CLI globalement sur la machine.
 
-Pour lancer la génération, il faut juste faire un clic droit sur le dossier ou on veut faire une génération.
+Pour lancer la génération, il faut juste faire un clic droit sur le dossier où on veut faire une génération.
 Puis "Angular File Generator" > "Generate Custom Element with CLI" > "Taper le nom du fichier" puis choisir entre composant ou service.
 
-L'avantage avec cette façon de faire c'est que l'on peut personnalisée facilement la génération.
+L'avantage avec cette façon de faire, c'est que l'on peut personnaliser facilement la génération.
 
 ## Installation et configuration de ESLint / Prettier
 
@@ -193,7 +193,7 @@ Ces règles imposent que :
 
 Cela permet de garder une convention de nommage cohérente et d'éviter les collisions avec les balises HTML standard.
 
-Il est possible de retrouver la liste complète des règles Angular ESLint sur leur [GitHub du plugin angular-eslint](https://github.com/angular-eslint/angular-eslint/tree/v22.5.0/packages/eslint-plugin/docs/rules).
+Il est possible de retrouver la liste complète des règles Angular ESLint sur le lien [GitHub du plugin angular-eslint](https://github.com/angular-eslint/angular-eslint/tree/v22.5.0/packages/eslint-plugin/docs/rules).
 
 ### Installation de Prettier
 
@@ -283,23 +283,23 @@ Il faut ajouter quelques commandes dans notre configuration.
 
 ### Lancement des commandes
 
-Pour commencer lancer le formatage du code avec la commande prettier.
+Pour commencer, lancez le formatage du code avec la commande Prettier :
 
 ```bash
 npm run prettier
 ```
 
-Suite à cela, il faudra commit les changements.
+Suite à cela, il faudra commiter les changements.
 
-Ensuite il faudra lancer la commande pour fix les erreurs de code.
+Ensuite, il faudra lancer la commande pour corriger les erreurs de code :
 
 ```bash
 npm run lint:fix
 ```
 
-Ensuite il faudra aussi commit les modifications.
+Ensuite, il faudra aussi commiter les modifications.
 
-A partir de ce moment la, l'environnement prettier et eslint sont configurer. A chaque modification de fichier, il sera lancer et tout le monde aura le même configuration sur son poste de travail.
+À partir de ce moment-là, l'environnement Prettier et ESLint est configuré. À chaque modification de fichier, le formatage sera lancé et tout le monde aura la même configuration sur son poste de travail.
 
 ## Choix et installation d'une librairie de composants UI
 
@@ -308,29 +308,29 @@ Pour accélérer le développement d'une interface moderne et cohérente, il est
 Voici une liste des librairies populaires :
 
 - Angular Material
-- PrimeNg
+- PrimeNG
 - NG Bootstrap
 - Taiga UI
 - Zard/ui (qui correspond à un Shadcn/ui de React)
 
 ### Point important
 
-Ses librairies apportent des composants prêts à l'emploi, mais il ne remplace pas le bon usage de l'architecture et du design system. Le plus important reste de choisir une librairie adaptée au besoin du projet, puis de garder une cohérence visuelle dans l'application.
+Ces librairies apportent des composants prêts à l'emploi, mais elles ne remplacent pas le bon usage de l'architecture et du design system. Le plus important reste de choisir une librairie adaptée aux besoins du projet, puis de garder une cohérence visuelle dans l'application.
 
 ## i18n
 
-L'internationalisation est une fonctionnalité native d'Angular qu'il faut activé avec l'installation du package `ng add @angular/localize`. Elle permet de préparer une application pour plusieurs langues sans dupliquer toute la logique de l'interface.
+L'internationalisation est une fonctionnalité native d'Angular qu'il faut activer avec l'installation du package `ng add @angular/localize`. Elle permet de préparer une application pour plusieurs langues sans dupliquer toute la logique de l'interface.
 
-Il est aussi possible d'utilise d'autre librairie comme `transloco de jsverse`.
+Il est aussi possible d'utiliser d'autres librairies comme `Transloco de jsverse`.
 
-J'ai surtout utiliser la librairie transloco car elle permet une utilisation assez simple.
+J'ai surtout utilisé la librairie Transloco, car elle permet une utilisation assez simple.
 
 ### À quoi sert l'i18n ?
 
 L'i18n permet de :
 
-- Traduire les libellés affichés à l'utilisateur dans d'autre langue comme `fr`, `en`, `es`
-- Centraliser les libelles dans des fichiers pour une meilleur maintenance dans le temps.
+- Traduire les libellés affichés à l'utilisateur dans d'autres langues comme `fr`, `en`, `es`
+- Centraliser les libellés dans des fichiers pour une meilleure maintenance dans le temps.
 
 ## Conclusion TODO
 
@@ -341,6 +341,6 @@ Ce starter Angular 22 permet de poser les bases d'un projet moderne et bien stru
 - configuration de VS Code pour gagner en productivité
 - installation d'ESLint et Prettier pour la qualité et le formatage
 - préparation du projet avec des composants UI
-- support de i18n pour des applications multilangues
+- support de l'i18n pour des applications multilingues
 
 En somme, ce starter sert de fondation solide pour démarrer un projet Angular avec des conventions lisibles, des outils pertinents et une structure facilement extensible.
