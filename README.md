@@ -7,6 +7,7 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
   - [Création du projet](#création-du-projet)
   - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
   - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
+    - [Le système de schématique dans Angular](#le-système-de-schématique-dans-angular)
   - [Installation et configuration de ESLint / Prettier](#installation-et-configuration-de-eslint--prettier)
     - [Installation de ESLint](#installation-de-eslint)
     - [À quoi sert la configuration ?](#à-quoi-sert-la-configuration-)
@@ -97,7 +98,7 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
     "angular.ng-template", // Angular Language Service : complétion et diagnostics dans les templates Angular
     "esbenp.prettier-vscode", // Formatage du code avec Prettier
     "dbaeumer.vscode-eslint", // Diagnostics ESLint, une fois ESLint configuré dans le projet
-    // TODO le schématique
+    "imgildev.vscode-angular-generator", // Schématique de génération de code pour Angular
 
     // Extensions de confort de vie
     "PKief.material-icon-theme", // Icônes de fichiers et de dossiers
@@ -109,6 +110,55 @@ Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
 }
 ```
 
+### Le système de schématique dans Angular
+
+Angular met à disposition un système de schémas ("schematics") qui permet de générer automatiquement des fichiers et de la structure de code selon des modèles prédéfinis. Cela permet de créer rapidement des composants, des services, des directives, des routes et d'autres éléments du projet sans avoir à tout écrire à la main.
+
+Par exemple, la commande suivante :
+
+```bash
+ng generate component mon-composant
+```
+
+crée automatiquement le composant, son template, son style et ses tests associés, en respectant les conventions du projet.
+
+Ce mécanisme est très utile pour standardiser le code et gagner du temps lors du développement. Il repose sur des schémas officiels fournis par Angular, mais il est aussi possible d'ajouter des schémas personnalisés.
+
+> [!WARNING]
+> Je ne recommande pas l'extension `cyrilletuzi.angular-schematics`, car elle est payante et il n'est pas possible de la personnalisée facilement.
+
+Je recommande l'extension `imgildev.vscode-angular-generator` car elle permet de faire des commandes personnalisée.
+
+Dans le fichier `.vscode/settings.json`, il est possible d'ajouter des commandes personnalisée pour faire la génération de composants, services ou autre via le plugin.
+
+Exemple de configuration :
+
+```jsonc
+{
+  "angular.submenu.customCommands": [
+    {
+      "name": "Creation component pour starterAngular22",
+      "command": "npm run ng g -- c",
+      "args": "--project starterAngular22",
+    },
+    {
+      "name": "Creation service pour starterAngular22",
+      "command": "npm run ng g -- s",
+      "args": "--project starterAngular22",
+    },
+  ],
+  ...
+}
+```
+
+> [!TIP]
+> On utilise `npm run ng` pour appeler le binaire Angular du projet depuis `node_modules`, sans devoir installer Angular CLI globalement sur la machine.
+
+Pour lancer la génération, il faut juste faire un clic droit sur le dossier ou on veut faire une génération.
+Puis "Angular File Generator" > "Generate Custom Element with CLI" > "Taper le nom du fichier" puis choisir entre composant ou service.
+
+L'avantage avec cette façon de faire c'est que l'on peut personnalisée facilement la génération.
+
 ## Installation et configuration de ESLint / Prettier
 
 ### Installation de ESLint
@@ -118,9 +168,6 @@ Pour installer et préparer la validation du code Angular, on utilise la command
 ```bash
 npm run ng add @angular-eslint/schematics@22
 ```
-
-> [!TIP]
-> On utilise `npm run ng` pour appeler le binaire Angular du projet depuis `node_modules`, sans devoir installer Angular CLI globalement sur la machine.
 
 Cette commande ajoute les dépendances et génère la configuration ESLint du projet. Dans cette version d'Angular, le fichier généré est `eslint.config.js`.
 
@@ -190,7 +237,7 @@ Le projet contient déjà un fichier `.prettierrc`, mais il faut lui ajouter de 
 
 ### Mise à jour de la configuration VS Code partagée
 
-Maintenant que la configuration est en place, il est possible, dans VS Code, d'ajouter un fichier nommé `settings.json`.
+Maintenant que la configuration est en place, il faut modifier le fichier nommé `.vscode/settings.json`.
 
 Ce fichier contient toutes les configurations que l'on veut partager. Dans notre cas, on va ajouter la configuration pour lancer le formatage Prettier au moment de la sauvegarde du fichier.
 
