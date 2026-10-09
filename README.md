@@ -6,7 +6,8 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
   - [Prérequis](#prérequis)
     - [Gestion des versions de node](#gestion-des-versions-de-node)
   - [Création du projet](#création-du-projet)
-  - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
+    - [Explication de la structure de l'application](#explication-de-la-structure-de-lapplication)
+    - [Définir node 22 pour notre projet](#définir-node-22-pour-notre-projet)
   - [Configuration des extensions dans VS Code](#configuration-des-extensions-dans-vs-code)
     - [Le système de schematics dans Angular](#le-système-de-schematics-dans-angular)
   - [Installation et configuration de ESLint / Prettier](#installation-et-configuration-de-eslint--prettier)
@@ -57,7 +58,7 @@ npx -p @angular/cli@22 ng new starterAngular22
 
 Cette commande permet de créer un projet Angular en version 22. On utilise le mode `npx`, qui permet d'exécuter une commande à distance sans avoir besoin d'installer `ng` sur notre poste.
 
-## Explication de la structure de l'application
+### Explication de la structure de l'application
 
 ```mermaid
 ---
@@ -103,6 +104,39 @@ treeView-beta
     tsconfig.json ## options TypeScript partagées et références aux configurations
     tsconfig.spec.json ## configuration TypeScript des fichiers de test
 ```
+
+### Définir node 22 pour notre projet
+
+Dans l'écosystème de nodeJS, il est possible dans le fichier `package.json` d'ajouter une configuration pour forcer la version de node pour ce projet.
+
+Pour cela, il faut ajouter la config suivante :
+
+```jsonc
+{
+  ...
+   "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=22.0.0 <24.0.0"
+  },
+  ...
+}
+```
+
+Puis faire la création d'un fichier `.npmrc` à la racine du projet pour ajouter la config :
+
+```jsonc
+engine-strict=true
+```
+
+Avec cette config, il sera possible d'utiliser que la version node 22. Si ce n'est pas le cas alors l'erreur suivante s'affiche dans la console.
+
+```bash
+npm error engine Unsupported engine
+```
+
+Cette configuration doit être mise en place en fonctionne de nos besoins. Pour le cas du projet Angular, il accepte plusieurs version de node. Il est possible de retrouver cela sur leur [documentation des versions](https://angular.dev/reference/versions).
+
+L'objectif finale de mettre en place cette configuration. C'est d'avoir tous le même environnement de travaille.
 
 ## Configuration des extensions dans VS Code
 
