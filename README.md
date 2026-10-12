@@ -19,9 +19,9 @@ Ce projet permet d'expliquer comment installer et configurer un projet Angular 2
     - [Mise à jour de la configuration VS Code partagée](#mise-à-jour-de-la-configuration-vs-code-partagée)
     - [Mise à jour de la config de "package.json"](#mise-à-jour-de-la-config-de-packagejson)
     - [Lancement des commandes](#lancement-des-commandes)
-  - [Choix et installation d'une librairie de composants UI](#choix-et-installation-dune-librairie-de-composants-ui)
+  - [Choix et installation d'une librairie de composants UI - TODO](#choix-et-installation-dune-librairie-de-composants-ui---todo)
     - [Point important](#point-important)
-  - [i18n](#i18n)
+  - [i18n - TODO](#i18n---todo)
     - [À quoi sert l'i18n ?](#à-quoi-sert-li18n-)
   - [Conclusion TODO](#conclusion-todo)
 
@@ -44,6 +44,7 @@ Pour installer, il faut aller sur [le github nvm](https://github.com/nvm-sh/nvm#
 
 **Commandes de base :**
 
+- `nvm list` : permet de lister les versions de Node.js installer sur son poste.
 - `nvm install 22` : installe la version 22 de Node.js.
 - `nvm use 22` : active la version 22 pour le poste.
 - `nvm alias default 22` : définit la version 22 comme version par défaut pour le poste.
@@ -144,13 +145,15 @@ Le fichier `.vscode/extensions.json` partage avec l'équipe une liste d'extensio
 
 Pour les afficher, ouvrez la vue **Extensions** et recherchez `@recommended`.
 
+Le projet contient déjà un fichier un peu light, voici une liste d'extension que je recommande :
+
 ```jsonc
 {
   "recommendations": [
     // Obligatoire pour Angular
-    "angular.ng-template", // Angular Language Service : complétion et diagnostics dans les templates Angular
+    "angular.ng-template", // Angular Language Service : complétion et vérifications dans les templates Angular
     "esbenp.prettier-vscode", // Formatage du code avec Prettier
-    "dbaeumer.vscode-eslint", // Diagnostics ESLint, une fois ESLint configuré dans le projet
+    "dbaeumer.vscode-eslint", // Analyse ESLint, une fois ESLint configuré dans le projet
     "imgildev.vscode-angular-generator", // Schematics de génération de code pour Angular
 
     // Extensions de confort de vie
@@ -208,7 +211,13 @@ Exemple de configuration :
 > On utilise `npm run ng` pour appeler le binaire Angular du projet depuis `node_modules`, sans devoir installer Angular CLI globalement sur la machine.
 
 Pour lancer la génération, il faut juste faire un clic droit sur le dossier où on veut faire une génération.
-Puis "Angular File Generator" > "Generate Custom Element with CLI" > "Taper le nom du fichier" puis choisir entre composant ou service.
+
+Puis :
+
+- "Angular File Generator"
+- "Generate Custom Element with CLI"
+- "Taper le nom du fichier"
+- Choisir entre composant ou service, cette liste est lié à votre config dans le fichier `settings.json` vu au-dessus.
 
 L'avantage avec cette façon de faire, c'est que l'on peut personnaliser facilement la génération.
 
@@ -247,6 +256,8 @@ Ces règles imposent que :
 Cela permet de garder une convention de nommage cohérente et d'éviter les collisions avec les balises HTML standard.
 
 Il est possible de retrouver la liste complète des règles Angular ESLint sur le lien [GitHub du plugin angular-eslint](https://github.com/angular-eslint/angular-eslint/tree/v22.5.0/packages/eslint-plugin/docs/rules).
+
+TODO - Ajouter l'explication sur l'ordre des imports
 
 ### Installation de Prettier
 
@@ -354,7 +365,7 @@ Ensuite, il faudra aussi commiter les modifications.
 
 À partir de ce moment-là, l'environnement Prettier et ESLint est configuré. À chaque modification de fichier, le formatage sera lancé et tout le monde aura la même configuration sur son poste de travail.
 
-## Choix et installation d'une librairie de composants UI
+## Choix et installation d'une librairie de composants UI - TODO
 
 Pour accélérer le développement d'une interface moderne et cohérente, il est souvent utile d'ajouter une librairie de composants. Pour un projet Angular, l'option la plus naturelle reste Angular Material, car elle est officiellement maintenue par Google et pensée pour fonctionner nativement avec le framework.
 
@@ -370,7 +381,7 @@ Voici une liste des librairies populaires :
 
 Ces librairies apportent des composants prêts à l'emploi, mais elles ne remplacent pas le bon usage de l'architecture et du design system. Le plus important reste de choisir une librairie adaptée aux besoins du projet, puis de garder une cohérence visuelle dans l'application.
 
-## i18n
+## i18n - TODO
 
 L'internationalisation est une fonctionnalité native d'Angular qu'il faut activer avec l'installation du package `ng add @angular/localize`. Elle permet de préparer une application pour plusieurs langues sans dupliquer toute la logique de l'interface.
 
